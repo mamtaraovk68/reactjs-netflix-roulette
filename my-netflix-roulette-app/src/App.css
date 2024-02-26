@@ -1,38 +1,36 @@
-.App {
-  text-align: center;
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden; /* Ensure that the background image doesn't cause scrolling */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Fallback for browsers that don't support backdrop-filter */
+.App-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 2, 2, 0.5); /* Adjust the color and transparency as needed */
+  z-index: -1; /* Place the overlay behind the background image */
 }
 
+/* Apply backdrop-filter for browsers that support it */
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .App-container {
+    backdrop-filter: blur(200px); /* Adjust the blur strength as needed */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Add a semi-transparent overlay to make the text more readable */
+.App-container {
+  position: relative;
+  z-index: 1;
+  background: url('./images/netflix-roulette-background.jpg') center/cover fixed; /* Adjust the alpha value as needed */
+  padding: 20px;
+  border-radius: 10px;
+} 

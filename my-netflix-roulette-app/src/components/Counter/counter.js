@@ -1,7 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
-import './counter.css';
-
+import './counter.css'
 
 // CounterApp React class level component
 class CounterApp extends React.Component{
@@ -33,9 +31,8 @@ class CounterApp extends React.Component{
 
   // Main render code for the CounterApp component. Re-renders when the state is changed
   render() {
-    return React.createElement('div',null,
-      React.createElement('h1', null, "Counter Application"),
-      React.createElement('p', null, `Current value: ${this.state.value}`),
+    return React.createElement('div',{ className: 'counter-container' },
+    React.createElement('p', null, 'Counter Value: ' + this.state.value),
       React.createElement('button', { onClick: this.incrementCounter, className: 'incrementButton' }, 'Increment'),
       React.createElement('span', { style: { margin: '0 10px' } }), // Adding a span for spacing
       React.createElement('button', { onClick: this.decrementCounter, className: 'decrementButton' }, 'Decrement')
