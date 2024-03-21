@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./search.css";
 
-function SearchApp({ query: initialQuery = "", onSearch }) {
+function SearchApp({ initialQuery, onSearch }) {
   const [query, setSearchQuery] = useState(initialQuery);
 
   useEffect(() => {
