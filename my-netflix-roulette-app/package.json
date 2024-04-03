@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "focus-trap-react": "^10.2.3",
+    "font-awesome": "^4.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-image-fallback": "^8.0.0",
+    "react-portal": "^4.2.2",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -50,10 +54,10 @@
     "@storybook/react": "^7.6.17",
     "@storybook/react-webpack5": "^7.6.17",
     "@storybook/test": "^7.6.17",
+    "cypress": "^13.6.6",
     "eslint-plugin-storybook": "^0.8.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.17",
-    "webpack": "^5.90.3",
-    "cypress": "^13.6.6"
+    "webpack": "^5.90.3"
   }
 }
