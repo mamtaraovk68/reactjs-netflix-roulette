@@ -1,0 +1,27 @@
+.add-movie-button {
+    position: absolute;
+    padding: 20px;
+    background-color: rgba(54, 14, 14, 0.2);
+    color: #FFF; /* White text color */
+    top: 105px; /* Adjust the top position as needed */
+    right: 100px; /* Position the button on the top-right corner */
+    border: 2px solid color(srgb rgb(127, 4, 4)); /* No border */
+    color: rgb(236, 229, 229);
+    font-size: 30px;
+    font-weight: bold; /* Bold font weight */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; 
+    outline: none;
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+  }
+
+/* Style when button is hovered */
+.add-movie-button:hover {
+    background-color: #FF4500; /* Orange background color */
+}
+
+/* Style when button is focused */
+.add-movie-button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(140, 41, 2, 0.5); /* Add orange shadow when focused */
+}
