@@ -2,31 +2,49 @@ import './App.css';
 import './index.css';
 import CounterApp from './components/Counter/counter';
 import SearchApp from './components/SearchForm/search';
-import GenreSelect from './components/Genre/genreselect';
+
+import MoviesList from './components/Movie/MovieList';
 import { useState } from 'react';
+import './components/Header/header.css';
+import SortAndGenreControl from './components/SortAndGenreControl/SortAndGenreControl';
 
 function App(){
-
-  const genres = ['All', 'Action', 'Romance', 'Horror' , 'Adventure', 'Comedy', 'Drama', 'Sci-Fi'];
-  const [selectedGenre, setSelectedGenre] = useState('All');
+  
+  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [currentSort, setCurrentSort] = useState('releaseDate');
 
   const handleSearch = (query) => {
-    // Replace with exact search logic
-    alert(`Initiated a search for your movie: ${query}`);
+    alert(`Searching for: ${query}`);
   };
 
   const handleGenreSelect = (genre) => {
     setSelectedGenre(genre);
-    alert(`Performing a search for selected genre: ${genre}`);
+    alert(`Selected genre: ${genre}`);
+  };
+
+  const handleSortChange = (sortOption) => {
+    setCurrentSort(sortOption);
+    alert(`Sorted By: ${sortOption}`);
   };
 
 
   return (
-    <div className="App-container">
+    <div className="div-container">
       <CounterApp initialValue={10} />
-      <SearchApp initialQuery="Lucy" onSearch={handleSearch} />
-      <GenreSelect genres={genres} selectedGenre={selectedGenre} onSelect={handleGenreSelect} />
-    </div>
+      <SearchApp initialQuery="What do you want to search" onSearch={handleSearch} />
+      
+      <SortAndGenreControl
+        genres={['All', 'Documentary', 'Comedy', 'Horror', 'Crime']}
+        selectedGenre={selectedGenre}
+        onSelect={handleGenreSelect}
+        currentSort={currentSort}
+        onSortChange={handleSortChange}
+      />
+
+      <br />
+      <MoviesList  />
+      <br />
+    </div>  
   );
 }
 export default App;
