@@ -8,25 +8,55 @@
   .header-element {
     color: azure;
     font-size: 30px;
+    font-weight: bold;
   }
 
   .search-input {
-    padding: 10px;
+    padding: 15px;
     font-size: 17px;
-    width: 600px;
-    border-radius: 50px;
-    background-color: rgb(82, 101, 124);
-    color: azure;
+    width: 800px;
+    border-radius: 220px;  
+    background-color: rgba(54, 14, 14, 0.2);
     font-weight: 1;
+    font-size: 70;
+    color: rgb(168, 168, 172);
+    height: 40px;
   }
   
   .search-button {
     margin: 5px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 50px;
-    background-color:  rgb(202, 146, 140);
+    top: 2px;
+    font-size: 30px;
+    border-radius: 10px; 
+    border: none;
+    background-color:  rgb(178, 23, 6);
     text-emphasis-color: inherit;
     cursor: pointer;
+    height: 57px;
+    width: 200px;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
   }
   
+  .search-button::after {
+    content: '\003E'; /* Unicode character for right arrow */
+    position: absolute;
+    padding: 10px;
+    left: 150px;
+    top: 50%;
+    right: 10px; /* Adjust as needed */
+    transform: translateY(-50%);
+    color: white; /* Adjust arrow color */
+    font-size: 40px;
+  }
+
+  .search-button:hover {
+    background-color: #FF4500; /* Orange background color */
+    color: #fff; /* Text color on hover */
+  }
+  
+  .search-button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add blue shadow when focused */
+  }

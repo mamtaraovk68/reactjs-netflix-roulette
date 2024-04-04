@@ -4,17 +4,17 @@ import "./movie.css";
 
 class MovieDetails extends Component {
   render() {
-    const { pictureURL, name, year, vote_average, runtime, overview } =
+    const { poster_path, title, release_date, vote_average, runtime, overview } =
       this.props.movieInfo;
 
     return (
       <div className="movie-details">
         <div className="movie-poster">
-          <img src={pictureURL} alt={name} />
+          <img src={poster_path} alt={poster_path} />
         </div>
         <div className="movie-info">
-          <h2>{name}</h2>
-          <p>Release Year: {year}</p>
+          <h2>{title}</h2>
+          <p>Release Year: {release_date}</p>
           <p>Rating: {vote_average}</p>
           <p>Duration: {runtime}</p>
           <p>{overview}</p>
@@ -26,9 +26,9 @@ class MovieDetails extends Component {
 
 MovieDetails.propTypes = {
   movieInfo: PropTypes.shape({
-    pictureURL: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     runtime: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

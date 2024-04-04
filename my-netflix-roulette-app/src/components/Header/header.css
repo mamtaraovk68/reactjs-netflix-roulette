@@ -5,31 +5,4 @@
     background-image: url('../../images/netflix-roulette-background.jpg');
 }
 
-.add-movie-button {
-    position: absolute;
-    background-color: #92020a; /* Red background color */
-    color: #FFF; /* White text color */
-    top: 195px; /* Adjust the top position as needed */
-    right: 300px; /* Position the button on the top-right corner */
-    border: none; /* No border */
-    color: white;
-    font-size: 20px;
-    font-weight: bold; /* Bold font weight */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; 
-    outline: none;
-    transition: background-color 0.3s ease; /* Smooth transition effect */
-  }
-
-/* Style when button is hovered */
-.add-movie-button:hover {
-    background-color: #FF4500; /* Orange background color */
-}
-
-/* Style when button is focused */
-.add-movie-button:focus {
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 0 3px rgba(140, 41, 2, 0.5); /* Add orange shadow when focused */
-}
-
   
