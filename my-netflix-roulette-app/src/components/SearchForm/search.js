@@ -5,6 +5,7 @@ import "./search.css";
 function SearchApp({ initialQuery, onSearch }) {
   const [query, setSearchQuery] = useState(initialQuery);
 
+  // Need to remove
   useEffect(() => {
     setSearchQuery(initialQuery);
   }, [initialQuery]);
@@ -19,8 +20,12 @@ function SearchApp({ initialQuery, onSearch }) {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleSearch();
+      onSearch(query);
     }
+  };
+
+  const handleOnClick = () => {
+    setSearchQuery("");
   };
 
   return (
@@ -32,6 +37,7 @@ function SearchApp({ initialQuery, onSearch }) {
         placeholder="Search..."
         onKeyDown={handleKeyPress}
         onChange={handleInputChange}
+        onClick={handleOnClick}
         value={query}
       />
       <span style={{ margin: "0 10px" }}></span>
