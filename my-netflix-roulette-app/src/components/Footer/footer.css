@@ -4,10 +4,10 @@
     color: #F65261;
     text-align: center;
     padding: 1rem 0;
-    background-color: #424242;
-    position: absolute;
+    background-color: #363434;
+    position: relative;
     width: 100%;
-    bottom: 0;
+    bottom: 50px;
 }
 
 .footer p {

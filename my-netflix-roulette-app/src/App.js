@@ -7,6 +7,9 @@ import { useState } from 'react';
 import './components/Header/header.css';
 import SortAndGenreControl from './components/SortAndGenreControl/SortAndGenreControl';
 import AddMovie from './components/Movie/AddMovie/AddMovie';
+import Footer from './components/Footer/footer';
+import Logo from './components/Logo/logo';
+import { CounterDialog } from './components/Counter/CounterDialog';
 
 
 
@@ -45,8 +48,9 @@ function App(){
 
   return (
     <div className="div-container">
+      <Logo />
       <AddMovie />
-      <CounterApp initialValue={10} />
+      <CounterDialog /> 
       <SearchApp initialQuery="What do you want to search" onSearch={handleSearch} />
       
       <SortAndGenreControl
@@ -60,7 +64,9 @@ function App(){
       <br />
       <MoviesList searchString={searchString} selectedGenre={selectedGenre} currentSort={currentSort}/>
       <br />
+      <Footer/>
     </div> 
+
   );
 }
 export default App;
