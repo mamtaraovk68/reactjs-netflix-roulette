@@ -7,7 +7,6 @@ class MovieDetails extends Component {
     const { poster_path, title, release_date, vote_average, runtime, overview } =
       this.props.movieInfo;
 
-      console.log("-------------------------------------");
     return (
       <div className="movie-details">
         <div className="movie-poster">

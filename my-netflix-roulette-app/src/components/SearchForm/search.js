@@ -10,19 +10,16 @@ function SearchApp({ initialQuery, onSearch }) {
   };
 
   const handleInputChange = (event) => {
-    console.log("Hndale input change______________");
     setSearchQuery(event.target.value);
   };
 
   const handleKeyPress = (e) => {
-    console.log("Hndale key press______________");
     if (e.key === "Enter") {
       onSearch(query);
     }
   };
 
   const handleOnClick = () => {
-    console.log("Hndale on lcikc ______________");
     setSearchQuery("");
   };
 
