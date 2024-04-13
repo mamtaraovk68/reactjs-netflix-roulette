@@ -3,6 +3,8 @@ import MovieCard from "./MovieCard";
 import "./movie.css";
 import axios from "axios";
 import { GET_MOVIES_ENDPOINT } from "../Constants";
+import { useParams, useSearchParams, useNavigate } from 'react-router-dom'; 
+import MovieDetails from "./MovieDetails";
 
 function MoviesList({ searchString, selectedGenre, currentSort }) {
   const [offsetVar, setOffsetVar] = useState(0);
@@ -11,6 +13,34 @@ function MoviesList({ searchString, selectedGenre, currentSort }) {
   const [totalAmount, setTotalAmount] = useState(0);
   const currentPage = Math.floor(offsetVar / limit) + 1;
   const totalPages = Math.ceil(totalAmount / limit);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { movieIdParam } = useParams(); // hook returns an object of key/value pairs of the dynamic params from the current URL that were matched by the <Route path>
+  const [showModal, setShowModal] = useState(false);
+  const [movieInfo, setMovieInfo] = useState({});
+  const navigate = useNavigate();
+
+  
+  const toggleModal = () => {
+    setShowModal((prevShowModal) => !prevShowModal);
+  };
+
+  const fetchMovieInfo = async () => {
+    if (movieIdParam) {
+      try {
+        const response = await axios.get(`http://localhost:4000/movies/${movieIdParam}`);
+        setMovieInfo(response.data);
+        setShowModal(true);
+      } catch (error) {
+        console.error('Error fetching movie details:', error);
+        setMovieInfo(null);
+      }
+    }
+  }
+
+  useEffect(() => {
+    fetchMovieInfo();
+  }, [movieIdParam]);
+
 
   const fetchMovieList = async () => {
     try {
@@ -50,6 +80,23 @@ function MoviesList({ searchString, selectedGenre, currentSort }) {
   }, [searchString, currentSort,  offsetVar, selectedGenre]);
 
 
+  // useEffect to update the search parameters
+  useEffect(()=> {
+    console.log("into searchparam useeffect");
+    const params = new URLSearchParams(searchParams);
+    if (currentSort) params.set('sortBy', currentSort);
+    if (selectedGenre) params.set('genre', selectedGenre);
+    if (searchString) params.set('query', searchString);
+    params.set('offset', offsetVar.toString());
+    if (movieIdParam) {
+      navigate(`/${movieIdParam}?${params.toString()}`);
+    } else {
+      navigate(`/?${params.toString()}`);
+    }
+    setSearchParams(params);
+  }, [searchString, currentSort,  offsetVar , selectedGenre]);
+
+
   const handlePreviousPage = () => {
     if (offsetVar - limit >= 0) {
       setOffsetVar(offsetVar - limit);
@@ -60,9 +107,46 @@ function MoviesList({ searchString, selectedGenre, currentSort }) {
     setOffsetVar(offsetVar + limit);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setShowModal(false);
+      }
+    };
+
+    if (showModal) {
+      document.addEventListener('keydown', handleKeyDown);
+    } else {
+      removePathParam();
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showModal]);
+
+  const removePathParam = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const newPath = '/';
+    const newUrl = `${newPath}?${urlParams.toString()}`;
+    window.history.pushState({}, '', newUrl);
+  }
+
+
 
   return (
     <div>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={toggleModal}>
+              &times;
+            </span>
+            <MovieDetails movieInfo={movieInfo} />
+          </div>
+        </div>
+      )}
       <section className="movieslist">
         {movieListResponse !== null &&
           movieListResponse.map((input) => (

@@ -5,26 +5,24 @@ import "./search.css";
 function SearchApp({ initialQuery, onSearch }) {
   const [query, setSearchQuery] = useState(initialQuery);
 
-  // Need to remove
-  useEffect(() => {
-    setSearchQuery(initialQuery);
-  }, [initialQuery]);
-
   const handleSearch = () => {
     onSearch(query);
   };
 
   const handleInputChange = (event) => {
+    console.log("Hndale input change______________");
     setSearchQuery(event.target.value);
   };
 
   const handleKeyPress = (e) => {
+    console.log("Hndale key press______________");
     if (e.key === "Enter") {
       onSearch(query);
     }
   };
 
   const handleOnClick = () => {
+    console.log("Hndale on lcikc ______________");
     setSearchQuery("");
   };
 
