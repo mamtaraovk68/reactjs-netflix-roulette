@@ -2,6 +2,8 @@
     justify-content: space-between;
     display: grid;
     grid-template-columns: repeat(auto-fit, 18.5rem);
+    background-color: #171a1d;
+
 }
 
 .movieslist h2 {
@@ -19,7 +21,7 @@
 }
 
 .movieInfo button {
-    color: #110f0f;
+    color: #ffffff;
     background-color: rgb(0, 10, 0, 0);
     border: solid grey;
     border-width: 0.13rem;
@@ -42,14 +44,18 @@
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
     font-weight: 600;
-    color: black; 
+    color: rgb(249, 249, 249); 
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .movieInfo p {
     margin-bottom: 2rem;
     margin-top: 0;
+    text-align: left;
     font-size: 0.8rem;
-    font-weight: lighter;
+    font-weight: normal;
+    color: white;
 }
 
 .row {
@@ -223,31 +229,36 @@ img {
   
 .pagination {
     display: flex;
+    height: 60px;
     justify-content: center;
     align-items: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
+    margin-top:0px;
+    margin-bottom: 20px;
+    background-color: #171a1d;
 }
 
 .pagination-button {
     padding: 8px 16px;
     margin: 0 5px;
-    border: 1px solid #333;
-    background-color: #fff;
-    color: #333;
+    border-radius: 10px; 
+    border: none;
+    background-color:  rgb(178, 23, 6);
+    text-emphasis-color: inherit;
+    cursor: pointer;
+    color: #f2e1e1;
     cursor: pointer;
     transition: all 0.3s;
-        margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .pagination-button:hover {
-    background-color: #333;
-    color: #fff;
+    background-color: #FF4500; /* Orange background color */
+    color: #fff; /* Text color on hover */
 }
 
 .page-numbers {
     margin: 0 10px;
     font-size: 16px;
-    color: #333;
+    color: #fffbfb;
     margin-bottom: 20px;
 }
