@@ -2,7 +2,7 @@ form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
   }
 
@@ -53,3 +53,20 @@ form {
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add blue shadow when focused */
   }
   
+  .error {
+    color: red;
+    align-items: left;
+    font-weight: 12px;
+  }
+
+
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.formGroup {
+  flex: 1;
+  margin-right: 10px;
+}

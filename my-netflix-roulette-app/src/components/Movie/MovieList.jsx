@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import "./movie.css";
 import axios from "axios";
-import { GET_MOVIES_ENDPOINT } from "../Constants";
+import { MOVIES_ENDPOINT } from "../Constants";
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom'; 
 import MovieDetails from "./MovieDetails";
 
@@ -60,7 +60,7 @@ function MoviesList({ searchString, selectedGenre, currentSort }) {
 
       console.log("Params: ", params);
 
-      const response = await axios.get(GET_MOVIES_ENDPOINT, {
+      const response = await axios.get(MOVIES_ENDPOINT, {
         params,
       });
       console.log("Response: ", response);

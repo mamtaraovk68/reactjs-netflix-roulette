@@ -12,6 +12,7 @@ import Logo from "./components/Logo/logo";
 import { CounterDialog } from "./components/Counter/CounterDialog";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ErrorPage } from "./components/ErrorPage";
+import MovieCard from "./components/Movie/MovieCard";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);
@@ -76,7 +77,14 @@ function App() {
                 currentSort={currentSort}
               />}/>
 
-          <Route path='*' element={<ErrorPage />}/>
+          <Route path="/new" element={<MoviesList
+                searchString={searchString}
+                selectedGenre={selectedGenre}
+                currentSort={currentSort}
+              />} />
+
+
+
          
         </Routes>
       </Router>
