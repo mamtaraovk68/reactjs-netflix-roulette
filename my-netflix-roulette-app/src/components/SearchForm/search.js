@@ -5,11 +5,6 @@ import "./search.css";
 function SearchApp({ initialQuery, onSearch }) {
   const [query, setSearchQuery] = useState(initialQuery);
 
-  // Need to remove
-  useEffect(() => {
-    setSearchQuery(initialQuery);
-  }, [initialQuery]);
-
   const handleSearch = () => {
     onSearch(query);
   };

@@ -1,51 +1,67 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component, useState } from "react";
+import PropTypes, { func } from "prop-types";
 import ReactImageFallback from "react-image-fallback";
 import placeholder from "../../images/film-poster-placeholder.png";
 import "./movie.css";
 import MovieDetails from "./MovieDetails";
+import { useNavigate, useLocation } from 'react-router-dom';
 
-class MovieImage extends Component {
-  constructor(props) {
-    super(props);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
+function MovieImage({ img, filmTitle, film  }) {
 
-  state = {
-    showModal: false,
-  };
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
 
-  toggleModal = () => {
-    this.setState({ showModal: !this.state.showModal }, () => {
-      if (this.state.showModal) {
-        document.addEventListener('keydown', this.handleKeyPress);
-      } else {
-        document.removeEventListener('keydown', this.handleKeyPress);
-      }
-    });
-  };
 
-  handleKeyPress = (event) => {
-    if (event.keyCode === 27) {
-      this.setState({ showModal: false });
+  const toggleModal = () => {
+    setShowModal(!showModal);
+    if (!showModal) {
+      document.addEventListener('keydown', handleKeyPress);
+    } else {
+      removePathParam();
+      document.removeEventListener('keydown', handleKeyPress);
     }
   };
 
-  render() {
-    const { img, filmTitle, film } = this.props;
+  const handleKeyPress = (event) => {
+    if (event.keyCode === 27) {
+     setShowModal(false);
+    }
+  };
+
+  const handleMovieClick = () => {
+    addPathParam();
+    setShowModal(true);
+  };
+
+  const removePathParam = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const newPath = '/';
+    const newUrl = `${newPath}?${urlParams.toString()}`;
+    window.history.pushState({}, '', newUrl);
+  }
+
+  const addPathParam = () => {
+    const searchParams = new URLSearchParams(location.search);
+    const newPath = `/${film.id}`;
+    const newUrl = `${newPath}?${searchParams.toString()}`;
+    // Update the URL without redirection
+    window.history.pushState({}, '', newUrl);
+  }
+
     return (
       <div>
         <ReactImageFallback
-          src={this.props.img}
+          src={img}
           fallbackImage={placeholder}
-          onClick={this.toggleModal}
-          title={this.props.filmTitle}
+          onClick={handleMovieClick}
+          title={filmTitle}
           className="filcard-image"
         />
-        {this.state.showModal && (
+        {showModal && (
           <div className="modal">
             <div className="modal-content">
-              <span className="close" onClick={this.toggleModal}>
+              <span className="close" onClick={toggleModal}>
                 &times;
               </span>
               <MovieDetails movieInfo={film} />
@@ -54,7 +70,7 @@ class MovieImage extends Component {
         )}
       </div>
     );
-  }
+        
 }
 
 MovieImage.propTypes = {
